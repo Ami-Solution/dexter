@@ -5,6 +5,7 @@
 
   .section
     h1.brand(:to="{name: 'home'}" tag="span")
+      span.amis Amis
       span.delta Delta
       span.dax DAX
 
@@ -142,6 +143,12 @@ export default {
     text-align center
     // border-bottom 5px solid #1E2B34
     margin-bottom 2em
+
+    .amis
+      color #0067CD
+      font-size 2.1em
+      font-family 'Russo One', sans-serif
+      font-weight 600   
 
     .delta
       color #0067CD

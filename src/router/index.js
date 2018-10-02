@@ -11,7 +11,7 @@ const router = new Router({
     {path: '/home', name: 'home', component: Pages.HomePage},
     {path: '/exchange', redirect: '/exchange/AMIS'},
     {path: '/exchange/:token', name: 'exchange', component: Pages.ExchangePage},
-
+    {path: '/portfolios', name: 'portfolios', component: Pages.PortfolioPage},
     // {path: '/currencies/:symbol', name: 'currency', component: Pages.CurrencyPage},
     // {path: '/arbitrage', name: 'arbitrage', component: Pages.ArbitragePage},
     // {path: '/exchanges/:id', name: 'exchange', component: Pages.ExchangePage},

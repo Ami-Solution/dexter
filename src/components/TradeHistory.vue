@@ -102,12 +102,12 @@ export default {
         font-weight 400
         flex-basis 33%
         &.volume
-          flex-basis 40%
+          flex-basis 30%
         &.price
           flex-basis 35%
           text-align center
         &.time
-          flex-basis 25%
+          flex-basis 35%
           text-align center
     .trade-list
       display block
@@ -142,7 +142,7 @@ export default {
 
           .volume-container
             justify-content flex-end
-            flex-basis 40%
+            flex-basis 30%
             height 100%
           .price-container
             line-height 1
@@ -152,7 +152,7 @@ export default {
 
           .time-container
             line-height 1
-            flex-basis 25%
+            flex-basis 35%
 
           &.sell
             span.price

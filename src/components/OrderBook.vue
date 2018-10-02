@@ -49,6 +49,8 @@ export default {
     return {
       orders: [],
       dateFormatter: new Intl.DateTimeFormat('en-US', {
+        month: 'numeric',
+        day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric',
@@ -74,7 +76,7 @@ export default {
       openModal: "components/OPEN_MODAL",
     }),
     priceFormat(price){
-      return parseFloat(price).toFixed(10)
+      return parseFloat(price).toFixed(9)
     },
     timeFormat(dateString){
       let d = new Date(dateString)

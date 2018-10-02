@@ -2,6 +2,7 @@
 #navbar
   .left
     router-link.brand(:to="{name: 'home'}" tag="span")
+      span.amis Amis
       span.delta Delta
       //- span.hyph -
       span.dax DAX
@@ -126,6 +127,11 @@ export default {
       align-items center
       cursor pointer
 
+      .amis
+        color #0067CD
+        font-size 30px
+        font-family 'Russo One', sans-serif
+        font-weight 600   
       .delta
         color #0067CD
         font-size 30px
@@ -208,11 +214,12 @@ export default {
   .center
     flex-grow 1
     .current-address
+      margin-left auto
       margin-right 1em
       text-align center
       span
         color $color-text-invert
-        font-weight 400
+        font-weight 200
 
   .right
     flex-basis 25%

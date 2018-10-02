@@ -1,7 +1,7 @@
 {
   "name": "Construct",
   "version": "1.0.0",
-  "description": "kubera hype machine",
+  "description": "Amis Delta Dax",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
