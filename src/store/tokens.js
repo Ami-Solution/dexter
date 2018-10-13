@@ -5,11 +5,11 @@ import tokens from './tokens.json'
 const state = {
   tokens: tokens,
   current_token: {
-    "addr": "0x949bEd886c739f1A3273629b3320db0C5024c719",
-    "name": "AMIS",
-    "decimals": 9
+    "addr": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+    "name": "ZRX",
+    "decimals": 18
   },
-  token_filter: "AMIS",
+  token_filter: "ZRX",
 }
 const getters = {
   tokens: (state) => state.tokens,

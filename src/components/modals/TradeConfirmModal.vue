@@ -29,7 +29,7 @@
     .confirm(v-else)
       .success(v-if="trade_successful")
         span.title Successfully created transaction!
-        a.txn(:href="'https://www.etherscan.io/tx/' + trade_message" target="_blank") {{trade_message}}
+        a.txn(:href="'https://etherscan.io/tx/' + trade_message" target="_blank") {{trade_message}}
       .error(v-else)
         span.title Error creating transaction:
         span.error-message {{trade_message}}

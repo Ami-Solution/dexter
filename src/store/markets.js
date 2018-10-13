@@ -37,15 +37,13 @@ const actions = {
     })
 
     return new Promise((resolve, reject) => {
-      // let w = window
-      // let l = w.location
-      // let h = l.hostname
-      // if(h.charAt(0) != "y" || h.charAt(4) != "o"){
+      // if(window.location.hostname.charAt(0) != "y" || window.location.hostname.charAt(4) != "o"){
       //   reject()
       //   return
       // }
 
       APIs.EtherDelta.socket.once('market', (market) => {
+        // console.log(market)
         if(market.trades){
           let trades = APIs.EtherDelta.parseTrades(market.trades, rootState.tokens.current_token)
           commit("trades/UPDATE_TRADES", trades, {root: true})
@@ -70,7 +68,7 @@ const actions = {
           commit("users/UPDATE_SELL_ORDERS", user_sell_orders, {root: true})
           commit("components/UPDATE_ORDER_HISTORY", {loading: false}, {root: true})
         }
-        if(market.myTrades || !rootState.users.address){
+        if(market.myTrades){
           let user_trades = market.myTrades ? market.myTrades : []
           commit("users/UPDATE_TRADES", user_trades, {root: true})
           commit("components/UPDATE_ORDER_HISTORY", {loading: false}, {root: true})
@@ -104,6 +102,7 @@ const actions = {
     })
 
     APIs.EtherDelta.socket.on('market', (market) => {
+      console.log(market)
       // Because EtherDelta cant program
       if(!market.trades || !market.orders){// } || !market.myTrades || !market.myOrders){
         // log("ED SUCKS!!")

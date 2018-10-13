@@ -25,7 +25,7 @@
     .withdew(v-else)
       .success(v-if="!error")
         span.title Successfully created transaction!
-        a.txn(:href="'https://www.etherscan.io/tx/' + txn" target="_blank") {{txn}}
+        a.txn(:href="'https://etherscan.io/tx/' + txn" target="_blank") {{txn}}
       .error(v-else)
         p Error:
         p {{error_message}}
