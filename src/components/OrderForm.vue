@@ -13,13 +13,13 @@
     .price-container
       span.label Price
       .input-container
-        input(placeholder="0.00" type="number" v-model="orderForm.price")
+        input(placeholder="0.000" type="number" v-model="orderForm.price")
         span.info ETH
 
     .amount-container
       span.label Amount
       .input-container
-        input(placeholder="0.00" type="number" v-model="orderForm.volume")
+        input(placeholder="0.000" type="number" v-model="orderForm.volume")
         span.info {{token.name}}
 
 
