@@ -1,30 +1,27 @@
 <template lang="pug">
 #navbar
   .left
-    router-link.brand(:to="{name: 'home'}" tag="span")
-      span.amis Amis
+    router-link.brand(:to="{name: 'exchange'}" tag="span")
       span.delta Delta
-      //- span.hyph -
+      span.hyph -
       span.dax DAX
-    .break(v-if="$route.name != 'home'")
-    .token-select(v-if="$route.name != 'home'")
+    .break
+    .token-select
       // img(src="https://files.coinmarketcap.com/static/img/coins/32x32/bitcoin.png")
       input(:value="token_filter" @focus="tokenSelectActive = true" @blur="tokenSelectActive = false" @input="onFilterChange")
       i.material-icons arrow_drop_down
       .type-ahead(v-if="tokenSelectActive")
         .token(v-for="token in tokens" @mousedown="onTokenSelect(token)")
           span {{token.name}}
-    .break(v-if="$route.name != 'home'")
-    .price-container(v-if="trades && trades.length && $route.name != 'home'")
+    .break
+    .price-container(v-if="trades && trades.length")
       span.price {{trades[0].price}}
-  .center(v-if="$route.name != 'home'")
+  .center
     .current-address
       span.address {{address}}
 
   .right
-    .version
-      span v0.1.0
-      .donate.button(@click="openDonateModal()") Donate
+    .donate.button(@click="openDonateModal()") Donate
     //- .current-address
     //-   span.address {{address}}
     //- router-link(:to="{name: 'portfolio', params: {address: address}}")
@@ -79,7 +76,7 @@ export default {
         }
         setTimeout(()=>{
           this.initMarket(trys)
-        }, trys * 1000)
+        }, trys * 5000)
       })
     },
   },
@@ -125,13 +122,7 @@ export default {
       margin-right 20px
       display flex
       align-items center
-      cursor pointer
 
-      .amis
-        color #0067CD
-        font-size 30px
-        font-family 'Russo One', sans-serif
-        font-weight 600   
       .delta
         color #0067CD
         font-size 30px
@@ -214,12 +205,11 @@ export default {
   .center
     flex-grow 1
     .current-address
-      margin-left auto
       margin-right 1em
       text-align center
       span
         color $color-text-invert
-        font-weight 200
+        font-weight 400
 
   .right
     flex-basis 25%
@@ -227,17 +217,10 @@ export default {
     margin-right 1em
     display flex
     align-items right
-
-    .version
-      display flex
-      margin-left auto
-      span
-        color $color-text-invert
-        margin-left auto
-        margin-right 1em
+    text-align right
 
     .donate
-
+      margin-left auto
       font-family 'Open Sans', sans-serif
       font-size 20px
       font-weight 400

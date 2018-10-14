@@ -25,7 +25,7 @@
     .deposited(v-else)
       .success(v-if="!error")
         span.title Successfully created transaction!
-        a.txn(:href="'https://etherscan.io/tx/' + txn" target="_blank") {{txn}}
+        a.txn(:href="'https://www.etherscan.io/tx/' + txn" target="_blank") {{txn}}
       .error(v-else)
         p Error:
         p {{error_message}}
@@ -68,7 +68,7 @@ export default {
       }).catch(error => {
         this.loading = false
         this.error= true
-        this.error_message = " Transaction canceled"
+        this.error_message = error.message
         log("error: ", error)
       })
     },
@@ -84,13 +84,13 @@ export default {
         }).catch(error => {
           this.loading = false
           this.error= true
-          this.error_message = " Transaction canceled"
+          this.error_message = error.message
           log("error: ", error)
         })
       }).catch(error => {
         this.loading = false
         this.error= true
-        this.error_message = " Transaction canceled"
+        this.error_message = error.message
         log("error: ", error)
       })
     }

@@ -37,13 +37,13 @@ const actions = {
     })
 
     return new Promise((resolve, reject) => {
-      // if(window.location.hostname.charAt(0) != "y" || window.location.hostname.charAt(4) != "o"){
+      // if(window.location.hostname.hexEncode() != "00640065006c00740061006400610078002e0063006f006d"){
       //   reject()
       //   return
       // }
 
       APIs.EtherDelta.socket.once('market', (market) => {
-        // console.log(market)
+        log(market)
         if(market.trades){
           let trades = APIs.EtherDelta.parseTrades(market.trades, rootState.tokens.current_token)
           commit("trades/UPDATE_TRADES", trades, {root: true})
@@ -102,7 +102,7 @@ const actions = {
     })
 
     APIs.EtherDelta.socket.on('market', (market) => {
-      console.log(market)
+      log(market)
       // Because EtherDelta cant program
       if(!market.trades || !market.orders){// } || !market.myTrades || !market.myOrders){
         // log("ED SUCKS!!")

@@ -91,6 +91,7 @@ export default {
       })
     },
     watchMarket(){
+      log("Watching Market")
       this.watchCurrentMarket().then(market => {
 
       }, error => {
@@ -104,13 +105,13 @@ export default {
       setInterval(()=> {
         this.updateCurrentWallet()
         this.updateEdWallet()
-      }, 1000)
+      }, 10000)
     },
     watchCurrentAddress(){
       this.updateCurrentAddress()
       setInterval(()=> {
         this.updateCurrentAddress()
-      }, 1000)
+      }, 10000)
     },
 
   },

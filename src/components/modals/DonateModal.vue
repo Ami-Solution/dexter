@@ -19,7 +19,7 @@
         span Thank you so much!
       .error(v-else)
         p Error:
-        p Donation not successful
+        p {{error_message}}
         //- .alt.balance-row
       //-   .left
       //-     span.currency {{token.name}}

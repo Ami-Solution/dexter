@@ -11,7 +11,7 @@
       .trade-container(v-for='trade in trades')
         .trade(:class="{'buy': trade.side == 'buy', 'sell': trade.side == 'sell' }" @click="goToTx(trade.txHash)")
           .info.volume-container(:style="tradeStyle(trade)")
-            span.volume {{trade.amount.toFixed(3)}}
+            span.volume {{trade.amount.toFixed(4)}}
           .info.price-container
             span.price {{trade.price.toFixed(10)}}
           .info.time-container
@@ -102,12 +102,12 @@ export default {
         font-weight 400
         flex-basis 33%
         &.volume
-          flex-basis 30%
+          flex-basis 40%
         &.price
           flex-basis 35%
           text-align center
         &.time
-          flex-basis 35%
+          flex-basis 25%
           text-align center
     .trade-list
       display block
@@ -142,7 +142,7 @@ export default {
 
           .volume-container
             justify-content flex-end
-            flex-basis 30%
+            flex-basis 40%
             height 100%
           .price-container
             line-height 1
@@ -152,7 +152,7 @@ export default {
 
           .time-container
             line-height 1
-            flex-basis 35%
+            flex-basis 25%
 
           &.sell
             span.price

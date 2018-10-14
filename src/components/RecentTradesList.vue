@@ -12,7 +12,7 @@
         .info.type-container
           span.type {{trade.side}}
         .info.volume-container
-          span.volume {{parseFloat(trade.amount).toFixed(3)}}
+          span.volume {{parseFloat(trade.amount).toFixed(4)}}
         .info.price-container
           span.price {{priceFormat(trade.price)}}
         .info.time-container
