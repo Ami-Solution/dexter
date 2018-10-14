@@ -76,8 +76,11 @@ class EtherDelta {
 
   depositEth(amount){
     amount = this.w3.toWei(amount, 'ether')
+    let data = {
+      value: amount
+    }
     return new Promise((resolve, reject) => {
-      this.contract.deposit(amount, function(error, result){
+      this.contract.deposit(data, function(error, result){
         if(!error){
           resolve(result)
         } else {
@@ -206,10 +209,10 @@ class EtherDelta {
             }
 
             this.submitOrder(data).then(results => {
-              log("success: ", results)
+              // log("success: ", results)
               resolve(results)
             }, error => {
-              log("error: ", error)
+              // log("error: ", error)
               reject(error)
             })
           }
@@ -253,10 +256,10 @@ class EtherDelta {
         value: this.w3.toWei(amount, "ether")
       }, function(error, result){
         if(!error){
-          log("RESULT: ", result)
+          // log("RESULT: ", result)
           resolve(result)
         } else {
-          log("ERROR: ", error)
+          // log("ERROR: ", error)
           reject(error)
         }
       })

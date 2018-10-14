@@ -1,6 +1,6 @@
 <template lang="pug">
 #app
-  .navbar-container
+  .navbar-container(v-if="$route.name == 'exchange'")
     navbar
 
   .router-view-container
@@ -24,7 +24,7 @@ export default {
   },
   name: 'app',
   created(){
-    console.log("%cWelcome to the Dexter Exchange", 'background: #222; color: #bada55; font-size: 22px')
+    console.log("%cWelcome to the DeltaDax Exchange", 'background: #222; color: #4dccff; font-size: 18px')
   },
 }
 </script>

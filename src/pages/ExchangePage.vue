@@ -91,7 +91,6 @@ export default {
       })
     },
     watchMarket(){
-      log("Watching Market")
       this.watchCurrentMarket().then(market => {
 
       }, error => {
