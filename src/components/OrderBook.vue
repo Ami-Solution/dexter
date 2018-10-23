@@ -55,7 +55,7 @@ export default {
         hour12: false,
       }),
       agg: .01,
-      limit: 500
+      limit: 30
     }
   },
   props: {
@@ -74,7 +74,7 @@ export default {
       openModal: "components/OPEN_MODAL",
     }),
     priceFormat(price){
-      return parseFloat(price).toFixed(10)
+      return parseFloat(price).toFixed(9)
     },
     timeFormat(dateString){
       let d = new Date(dateString)
@@ -213,10 +213,9 @@ export default {
     .order-list
       display block
       flex-basis 100%
-      overflow scroll
+      overflow auto
       flex-wrap wrap
       height 100%
-      overflow scroll
 
       .order-container
         display flex

@@ -111,7 +111,7 @@ var actions = {
         wallet.eth_balance = results
       })
 
-      // Get Current Token Balnace
+      // Get Current Token Balance
       APIs.EtherDelta.getBalance(rootState.tokens.current_token.addr, address).then(results => {
         wallet.current_token_balance = results
       })

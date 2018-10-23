@@ -13,7 +13,7 @@
           .info.volume-container(:style="tradeStyle(trade)")
             span.volume {{trade.amount.toFixed(4)}}
           .info.price-container
-            span.price {{trade.price.toFixed(10)}}
+            span.price {{trade.price.toFixed(9)}}
           .info.time-container
             span.time {{trade.formatted_date}}
 

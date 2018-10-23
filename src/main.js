@@ -21,21 +21,21 @@ Vue.config.productionTip = false
 
 // Move to Service Worker?
 // store.dispatch("users/load_user")
-window.onbeforeunload = function(event) {
-  // store.dispatch("users/save_user")
-};
+// window.onbeforeunload = function(event) {
+//   // store.dispatch("users/save_user")
+// };
 
 
 // Helpers TODO - move
 String.prototype.hexEncode = function(){
-    var hex, i;
+  var hex, i;
 
-    var result = "";
-    for (i=0; i<this.length; i++) {
-        hex = this.charCodeAt(i).toString(16);
-        result += ("000"+hex).slice(-4);
-    }
-    return result
+  var result = "";
+  for (i=0; i<this.length; i++) {
+    hex = this.charCodeAt(i).toString(16);
+    result += ("000"+hex).slice(-4);
+  }
+  return result
 }
 
 new Vue({

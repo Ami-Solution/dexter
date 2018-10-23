@@ -50,7 +50,7 @@ export default {
     }),
     total(){
       let total = this.orderForm.price * this.orderForm.volume
-      return total.toFixed(10)
+      return total.toFixed(9)
     }
   },
   mounted(){

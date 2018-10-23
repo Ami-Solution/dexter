@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     priceFormat(price){
-      return parseFloat(price).toFixed(10)
+      return parseFloat(price).toFixed(9)
     },
     timeFormat(dateString){
       let d = new Date(dateString)

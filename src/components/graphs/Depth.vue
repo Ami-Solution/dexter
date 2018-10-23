@@ -1,34 +1,14 @@
 <template lang="pug">
-.depth-chart.component
-  .header
-    span DEPTH CHART
+.depth
+  .chart-container#depth-chart-container(ref="depth_chart_container")
 
-    .left
-      .option-container
-        span Percent
-        input(v-model="agg" type="number" min="1")
-
-  .body
-    .chart-container#depth-chart-container(ref="depth_chart_container")
-
-  overlay(:visible="depthChart.loading")
 </template>
 
 <script>
 import * as d3 from 'd3'
 import moment from 'moment'
-import Overlay from '@/components/Overlay'
-import { mapGetters, mapMutations } from 'vuex'
 export default {
-  name: 'DepthChart',
-  components: {
-    Overlay
-  },
-  data(){
-    return {
-      agg: 10
-    }
-  },
+  name: 'Depth',
   props: {
     buys: {
       type: Array,
@@ -38,6 +18,10 @@ export default {
       type: Array,
       default: () => []
     },
+    agg: {
+      type: Number,
+      default: 50
+    }
   },
   watch: {
     buys: {
@@ -64,9 +48,10 @@ export default {
       deep: true
     }
   },
+
   methods: {
     initChart(){
-      this.margin = {top: 20, right: 40, bottom: 50, left: -1}
+      this.margin = {top: 0, right: -1, bottom: -1, left: -1}
       this.width = this.$refs.depth_chart_container.clientWidth - this.margin.left - this.margin.right
       this.height = this.$refs.depth_chart_container.clientHeight - this.margin.top - this.margin.bottom
 
@@ -80,45 +65,37 @@ export default {
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
     },
     draw(buy_data, sell_data){
+      // log(buy_data)
       let all_data = buy_data.concat(sell_data)
+
       d3.select("#depth-chart-group").selectAll("*").remove()
 
       // START
-      let x = d3.scaleLinear()
-          .rangeRound([0, this.width])
-      // let x = d3.scalePow().exponent(2)
+      // let x = d3.scaleLinear()
       //     .rangeRound([0, this.width])
+      let x = d3.scalePow().exponent(2)
+          .rangeRound([0, this.width])
 
-      let y = d3.scaleLinear()
-          .rangeRound([this.height, 0])
-      // let y = d3.scalePow().exponent(2)
+      // let y = d3.scaleLinear()
       //     .rangeRound([this.height, 0])
+      let y = d3.scalePow().exponent(2)
+          .rangeRound([this.height, 0])
 
       var buy_area = d3.area()
           .curve(d3.curveStep)
-          .x(d => { return x(d.cum_volume) })
-          .y1(d => { return y(d.price) })
+          .x(d => { return x(d.price) })
+          .y1(d => { return y(d.cum_volume) })
 
       var sell_area = d3.area()
           .curve(d3.curveStep)
-          .x(d => { return x(d.cum_volume) })
-          .y1(d => { return y(d.price) })
+          .x(d => { return x(d.price) })
+          .y1(d => { return y(d.cum_volume) })
 
-      // x.domain(d3.extent(all_data, d => { return d.price }))
-      // y.domain([0, d3.max(all_data, d => { return d.cum_volume })])
-
-      x.domain([0, d3.max(all_data, d => { return d.cum_volume })])
-      y.domain(d3.extent(all_data, d => { return d.price }))
-
-      // x.domain(d3.extent(all_data, d => { return d.cum_worth }))
-      // y.domain([d3.min(all_data, d => { return d.price }), d3.max(all_data, d => { return d.price })])
-
-      // buy_area.y0(y(0))
-      // sell_area.y0(y(0))
+      x.domain(d3.extent(all_data, d => { return d.price }))
+      y.domain([0, d3.max(all_data, d => { return d.cum_volume })])
 
       buy_area.y0(y(0))
-      sell_area.y0(y(1))
-
+      sell_area.y0(y(0))
 
       // Grids
       this.g.append("g")
@@ -315,10 +292,7 @@ export default {
         return total + current.price
       }, 0)
       return sum / this.sells.length
-    },
-   ...mapGetters({
-      depthChart: "components/depth_chart",
-    }),
+    }
   },
   mounted(){
     this.initChart()
@@ -330,76 +304,60 @@ export default {
 <style lang="stylus">
 @import "../../styles/main.styl"
 
-.depth-chart
+.depth
   flex-basis 100%
   height 100%
   position relative
+  overflow hidden
 
-  .left
-     display flex
-     margin-left auto
+  h3
+    color black
 
-     .option-container
-       display flex
-       align-items center
-       margin-left 20px
-       span
-         font-size 11px
-         font-weight 700
-         color $color-text
-         margin-right 10px
-
-       input
-         font-size 11px
-         width 40px
-         height 20px
-         color $color-text
-
-  .body
+  .chart-container
     height 100%
-    overflow hidden
+    width 100%
 
-    .chart-container
+    svg
+      shape-rendering crispedges
       height 100%
       width 100%
 
-      svg
-        shape-rendering crispedges
-        height 100%
-        width 100%
+      text
+        opacity 0
+        dy 10px
+        fill transparentify($color-text, 45%)
 
-        text
-          dy 10px
-          fill transparentify($color-text, 45%)
+   .buy-area
+     // fill transparentify($color-green, 25%)
+     fill url(#buy-area-gradient)
+     stroke url(#buy-area-gradient)
+     stroke-width 3px
+     // stroke-dasharray 1500
 
-     .buy-area
-       fill transparentify($color-green, 25%)
-       stroke $color-green
-       stroke-width 1px
-       // stroke-dasharray 500
+   .sell-area
+     fill url(#sell-area-gradient)
+     // fill transparentify($color-red, 25%)
+     stroke url(#sell-area-gradient)
+     stroke-width 3px
+     // stroke-dasharray 500
 
-     .sell-area
-       fill transparentify($color-red, 25%)
-       stroke $color-red
-       stroke-width 1px
-       // stroke-dasharray 500
-
-     .domain
+   .domain
+     stroke none
+   .tick
+     line
        stroke none
-     .tick
-       line
-         stroke none
-     // .axis
-     //   stroke $color-text
+   .axis
+     stroke black
+     stroke-opacity 0.2
 
-  .grid line {
-    stroke $color-text
-    stroke-opacity 0.1
+  .grid line
+    stroke rgba(0, 0, 0, .1)
+    stroke-width 1px
     shape-rendering crispEdges
-  }
 
-  .grid path {
+
+  .grid path
     stroke-width: 0;
-  }
+
 
 </style>

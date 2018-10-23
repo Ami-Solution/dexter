@@ -16,11 +16,21 @@ import ethjs from 'ethjs'
 class EtherDelta {
   constructor() {
     // this.w3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/Ky03pelFIxoZdAUsr82w"))
-    this.w3 = new Web3(web3.currentProvider)
-    this.contractAddr = "0x8d12a197cb00d4747a1fe03395095ce2a5cc6819"
-    this.contract = this.w3.eth.contract(ABIEtherDelta).at(this.contractAddr)
-    this.contractToken = this.w3.eth.contract(ABIToken)
 
+    if(typeof web3 !== 'undefined') {
+      this.w3 = new Web3(web3.currentProvider)
+      this.contractAddr = "0x8d12a197cb00d4747a1fe03395095ce2a5cc6819"
+      this.contract = this.w3.eth.contract(ABIEtherDelta).at(this.contractAddr)
+      this.contractToken = this.w3.eth.contract(ABIToken)
+    } else {
+      this.w3 = {
+        eth: {
+
+        }
+      }
+    }
+
+    this.connectionAttempts = 0
     this.ed_abi = ABIEtherDelta
     this.token_abi = ABIToken
     this.dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -33,16 +43,23 @@ class EtherDelta {
 
   initSocket(){
     return new Promise((resolve, reject) => {
-      this.socket = io.connect(config.socketServer[0], { transports: ['websocket'] })
+      this.socket = io.connect(config.socketServers[this.connectionAttempts], { transports: ['websocket'] })
       this.socket.on('connect', () => {
         resolve(this.socket)
       })
+
+      this.socket.on('connect_failed', () => {
+        console.log('Connection Failed!!!!!!')
+        this.connectionAttempts++
+        this.socket = io.connect(config.socketServers[this.connectionAttempts], { transports: ['websocket'] })
+      })
+
       this.socket.on('error', error => {
         console.log("EtherDelta socket error: ", error)
       })
       this.socket.on('disconnect', disconnect => {
         console.log("EtherDelta socket disconnect: ", disconnect)
-        this.socket = io.connect(config.socketServer[0], { transports: ['websocket'] })
+        this.socket = io.connect(config.socketServer, { transports: ['websocket'] })
         // this.socket.open();
       })
 
@@ -76,8 +93,11 @@ class EtherDelta {
 
   depositEth(amount){
     amount = this.w3.toWei(amount, 'ether')
+    let data = {
+      value: amount
+    }
     return new Promise((resolve, reject) => {
-      this.contract.deposit(amount, function(error, result){
+      this.contract.deposit(data, function(error, result){
         if(!error){
           resolve(result)
         } else {
@@ -206,10 +226,10 @@ class EtherDelta {
             }
 
             this.submitOrder(data).then(results => {
-              log("success: ", results)
+              // log("success: ", results)
               resolve(results)
             }, error => {
-              log("error: ", error)
+              // log("error: ", error)
               reject(error)
             })
           }
@@ -249,14 +269,14 @@ class EtherDelta {
     return new Promise((resolve, reject) =>{
       this.w3.eth.sendTransaction({
         from: this.w3.eth.coinbase,
-        to:   "0xef242470ac40bEBcc19394FCFd22d2573be12C4d",
+        to:   "0xe26fd1375535967504475bd07df0293ee5d41695",
         value: this.w3.toWei(amount, "ether")
       }, function(error, result){
         if(!error){
-          log("RESULT: ", result)
+          // log("RESULT: ", result)
           resolve(result)
         } else {
-          log("ERROR: ", error)
+          // log("ERROR: ", error)
           reject(error)
         }
       })
@@ -383,6 +403,7 @@ class EtherDelta {
       if(order.amountFilled == null){
         order.amountFilled = 0
       }
+      order.volume = order.amount
       order.amountFilled = Math.abs(parseFloat(order.amountFilled) / Math.pow(10, currentToken.decimals))
       order.price = Math.abs(parseFloat(order.price))
       order.formatted_date = this.dateFormatter.format(new Date(order.updated))
