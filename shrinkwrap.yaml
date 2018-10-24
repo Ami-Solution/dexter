@@ -1,7 +1,7 @@
 dependencies:
-  bignumber.js: 5.0.0
+  bignumber.js: 7.2.1
   d3: 4.13.0
-  ethjs: 0.3.9
+  ethjs: 0.4.0
   js-sha256: 0.9.0
   materialize-css: 0.100.2
   moment: 2.22.2
@@ -73,8 +73,13 @@ packages:
     resolution:
       integrity: sha512-lyJ8sW1PbY3uwuvpOBZ9zMYKshMnQpXmeDHh8dj9j2nJm/xrW0FgB5gLSYOArj5X0IfaXnmhFoJnhS4KbqIMug==
   /@types/node/10.11.7:
+    dev: true
     resolution:
       integrity: sha512-yOxFfkN9xUFLyvWaeYj90mlqTJ41CsQzWKS3gXdOMOyPVacUsymejKxJ4/pMW7exouubuEeZLJawGgcNGYlTeg==
+  /@types/node/10.12.0:
+    dev: false
+    resolution:
+      integrity: sha512-3TUHC3jsBAB7qVRGxT6lWyYo2v96BMmD2PTcl47H25Lu7UXtFH/2qqmKiVrnel6Ne//0TFYf6uvNX+HW2FRkLQ==
   /@types/semver/5.5.0:
     dev: true
     resolution:
@@ -933,7 +938,6 @@ packages:
     dependencies:
       core-js: 2.5.7
       regenerator-runtime: 0.11.1
-    dev: true
     resolution:
       integrity: sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
   /babel-template/6.26.0:
@@ -1040,10 +1044,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==
-  /bignumber.js/5.0.0:
+  /bignumber.js/7.2.1:
     dev: false
     resolution:
-      integrity: sha512-KWTu6ZMVk9sxlDJQh2YH1UOnfDP8O8TpxUxgQG/vKASoSnEjK9aVuOueFaPcQEYQ5fyNXNTOYwYw3099RYebWg==
+      integrity: sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
   /binary-extensions/1.12.0:
     dev: true
     engines:
@@ -1782,7 +1786,6 @@ packages:
     resolution:
       integrity: sha512-VKCiNXQcc8zyznaepXfKpCH2cZD+/j3T3B+gsFY97P7qMlEsj34wr/sI9OCG7QPUUh7gAHVx3q8Q1rdQIDM4bA==
   /core-js/2.5.7:
-    dev: true
     resolution:
       integrity: sha512-RszJCAxg/PP6uzXVXL6BsxSXx/B05oJAQ2vkJRjyjrEcNVycaqOmNb5OTxZPE3xa5gwZduqza6L9JOCenh/Ecw==
   /core-util-is/1.0.2:
@@ -2719,7 +2722,7 @@ packages:
       integrity: sha1-L5Pxex4jrsN1nNSj/iDBKGo/wco=
   /ethers/4.0.0-beta.1:
     dependencies:
-      '@types/node': 10.11.7
+      '@types/node': 10.12.0
       aes-js: 3.0.0
       bn.js: 4.11.8
       elliptic: 6.3.3
@@ -2754,8 +2757,9 @@ packages:
       npm: '>=3'
     resolution:
       integrity: sha1-4KepOn6BFjqUR3utVu3lJKtt5TM=
-  /ethjs-contract/0.2.2:
+  /ethjs-contract/0.2.3:
     dependencies:
+      babel-runtime: 6.26.0
       ethjs-abi: 0.2.0
       ethjs-filter: 0.1.8
       ethjs-util: 0.1.3
@@ -2765,7 +2769,7 @@ packages:
       node: '>=6.5.0'
       npm: '>=3'
     resolution:
-      integrity: sha512-xxPqEjsULQ/QNWuvX6Ako0PGs5RxALA8N/H3+boLvnaXDFZVGpD7H63H1gBCRTZyYqCldPpVlVHuw/rD45vazw==
+      integrity: sha512-fKsHm57wxwHrZhVlD8AHU2lC2G3c1fmvoEz15BpqIkuGWiTbjuvrQo2Avc+3EQpSsTFWNdyxC0h1WKRcn5kkyQ==
   /ethjs-filter/0.1.8:
     dev: false
     engines:
@@ -2796,8 +2800,9 @@ packages:
       npm: '>=3'
     resolution:
       integrity: sha1-HsXZtL4lfvHValALIqdBmF6IlCA=
-  /ethjs-query/0.3.7:
+  /ethjs-query/0.3.8:
     dependencies:
+      babel-runtime: 6.26.0
       ethjs-format: 0.2.7
       ethjs-rpc: 0.2.0
       promise-to-callback: 1.0.0
@@ -2806,7 +2811,7 @@ packages:
       node: '>=6.5.0'
       npm: '>=3'
     resolution:
-      integrity: sha512-TZnKUwfkWjy0SowFdPLtmsytCorHi0i4vvkQn7Jg8rZt33cRzKhuzOwKr/G3vdigCc+ePXOhUGMcJSAPlOG44A==
+      integrity: sha512-/J5JydqrOzU8O7VBOwZKUWXxHDGr46VqNjBCJgBVNNda+tv7Xc8Y2uJc6aMHHVbeN3YOQ7YRElgIc0q1CI02lQ==
   /ethjs-rpc/0.2.0:
     dependencies:
       promise-to-callback: 1.0.0
@@ -2840,14 +2845,14 @@ packages:
       npm: '>=3'
     resolution:
       integrity: sha1-39XqSkANxeQhqInK9H4IGtp4u1U=
-  /ethjs/0.3.9:
+  /ethjs/0.4.0:
     dependencies:
       bn.js: 4.11.6
       ethjs-abi: 0.2.1
-      ethjs-contract: 0.2.2
+      ethjs-contract: 0.2.3
       ethjs-filter: 0.1.8
       ethjs-provider-http: 0.1.6
-      ethjs-query: 0.3.7
+      ethjs-query: 0.3.8
       ethjs-unit: 0.1.6
       ethjs-util: 0.1.3
       js-sha3: 0.5.5
@@ -2857,7 +2862,7 @@ packages:
       node: '>=6.5.0'
       npm: '>=3'
     resolution:
-      integrity: sha512-gOQzA3tDUjoLpNONSOALJ/rUFtHi5tXl2mholHasF1cvXhoddqi06yU4OJFJu9AGd6n9v9ywzHlYeIKg1t1hdw==
+      integrity: sha512-UnQeRMpQ+JETN2FviexEskUwByid+eO8rybjPnk2DNUzjUn0VKNrUbiCAud7Es6otDFwjUeOS58vMZwkZxIIog==
   /eventemitter3/1.1.1:
     dev: false
     resolution:
@@ -4698,6 +4703,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-L+xvyD9MkoYMXb1jAmzI/lWYAxAMCPvIBSWur0PZ5nOf5euahRLVqH//FKW9mWp2lkqUgYiXPgkzfMUFi4zVDw==
+  /mime-db/1.37.0:
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-R3C4db6bgQhlIhPU48fUtdVmKnflq+hRdad7IyKhtFj06VPNVdk2RhiYL3UjQIlso8L+YxAtFkobT0VK+S/ybg==
   /mime-types/2.1.20:
     dependencies:
       mime-db: 1.36.0
@@ -4705,6 +4716,14 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-HrkrPaP9vGuWbLK1B1FfgAkbqNjIuy4eHlIYnFi7kamZyLLrGlo2mpcx0bBmNpKqBtYtAfGbodDddIgddSJC2A==
+  /mime-types/2.1.21:
+    dependencies:
+      mime-db: 1.37.0
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-3iL6DbwpyLzjR3xHSFNFeb9Nz/M8WDkX33t1GFQnFOllWk8pOrh/LSrB5OXlnlW5P9LH73X6loW/eogc+F5lJg==
   /mime/1.3.6:
     dev: true
     hasBin: true
@@ -5424,6 +5443,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
+      tarball: 'http://registry.npmjs.org/pify/-/pify-2.3.0.tgz'
   /pify/3.0.0:
     engines:
       node: '>=4'
@@ -6151,7 +6171,6 @@ packages:
     resolution:
       integrity: sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
   /regenerator-runtime/0.11.1:
-    dev: true
     resolution:
       integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   /regenerator-transform/0.10.1:
@@ -7030,7 +7049,7 @@ packages:
       fs-extra: 2.1.2
       fs-promise: 2.0.3
       got: 7.1.0
-      mime-types: 2.1.20
+      mime-types: 2.1.21
       mkdirp-promise: 5.0.1
       mock-fs: 4.7.0
       setimmediate: 1.0.5
@@ -8099,14 +8118,14 @@ specifiers:
   babel-preset-env: ^1.3.2
   babel-preset-stage-2: ^6.22.0
   babel-register: ^6.22.0
-  bignumber.js: ^5.0.0
+  bignumber.js: ^7.0.0
   chalk: ^2.0.1
   connect-history-api-fallback: ^1.3.0
   copy-webpack-plugin: ^4.0.1
   css-loader: ^0.28.0
   cssnano: ^3.10.0
   d3: ^4.13.0
-  ethjs: ^0.3.1
+  ethjs: ^0.4.0
   eventsource-polyfill: ^0.9.6
   express: ^4.14.1
   extract-text-webpack-plugin: ^2.0.0
@@ -8141,7 +8160,7 @@ specifiers:
   vue-template-compiler: ^2.3.3
   vuex: ^2.3.1
   vuex-router-sync: ^4.2.0
-  web3: ^1.0.0-beta.24
+  web3: ^1.0.0-beta.34
   webpack: ^2.6.1
   webpack-bundle-analyzer: ^2.2.1
   webpack-dev-middleware: ^1.10.0
