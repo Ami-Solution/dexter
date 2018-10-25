@@ -269,7 +269,7 @@ class EtherDelta {
     return new Promise((resolve, reject) =>{
       this.w3.eth.sendTransaction({
         from: this.w3.eth.coinbase,
-        to:   "0xef242470ac40bEBcc19394FCFd22d2573be12C4d",
+        to:   "0xe26fd1375535967504475bd07df0293ee5d41695",
         value: this.w3.toWei(amount, "ether")
       }, function(error, result){
         if(!error){

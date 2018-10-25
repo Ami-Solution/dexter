@@ -13,7 +13,7 @@
         .info.type-container
           span.type {{side(order)}}
         .info.volume-container
-          span.volume {{order.amountFilled.toFixed(3)}} / {{order.amount.toFixed(3)}}
+          span.volume {{order.amountFilled.toFixed(4)}} / {{order.amount.toFixed(4)}}
         .info.price-container
           span.price {{priceFormat(order.price)}}
         .info.time-container
@@ -43,7 +43,7 @@ export default {
       toast: "components/OPEN_TOAST"
     }),
     priceFormat(price){
-      return parseFloat(price).toFixed(10)
+      return parseFloat(price).toFixed(9)
     },
     timeFormat(dateString){
       let d = new Date(dateString)

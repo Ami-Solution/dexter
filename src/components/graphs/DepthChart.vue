@@ -6,7 +6,7 @@
     .left
       .option-container
         span Percent
-        input(v-model="agg" type="number" min="10")
+        input(v-model="agg" type="number" min="1")
 
   .body
     .chart-container#depth-chart-container(ref="depth_chart_container")

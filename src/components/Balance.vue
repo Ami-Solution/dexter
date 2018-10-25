@@ -1,15 +1,15 @@
 <template lang="pug">
 .balance.component
   .header
-    span BALANCE
+    span Amis Delta Dax Wallet Balance
   .body
     .balance-container
       .eth.balance-row
         span.currency ETH
-        span.amount {{edEthBalance.toFixed(10)}}
+        span.amount {{edEthBalance.toFixed(9)}}
       .alt.balance-row
         span.currency {{token.name}}
-        span.amount {{edTokenBalance.toFixed(10)}}
+        span.amount {{edTokenBalance.toFixed(9)}}
     .action-container
       div.button.deposit(@click="openModal('DepositModal')")
         i.material-icons eject

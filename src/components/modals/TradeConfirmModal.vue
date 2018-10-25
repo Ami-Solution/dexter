@@ -18,18 +18,18 @@
         .info
           span(v-if="tradeType === 'sell'") Fee ({{token.name}})
           span(v-else) Fee (ETH)
-          span.amount {{fee.toFixed(10)}}
+          span.amount {{fee.toFixed(9)}}
       .field.order
         .info
           span Order (ETH)
-          span.amount {{total.toFixed(10)}}
+          span.amount {{total.toFixed(9)}}
       .field
         .button(@click="submitTrade()" :class="{'sell': tradeType === 'sell'}")
           span {{tradeType}} {{amount}} {{token.name}} @ {{tradeOrder.price}} ETH
     .confirm(v-else)
       .success(v-if="trade_successful")
         span.title Successfully created transaction!
-        a.txn(:href="'https://www.etherscan.io/tx/' + trade_message" target="_blank") {{trade_message}}
+        a.txn(:href="'https://etherscan.io/tx/' + trade_message" target="_blank") {{trade_message}}
       .error(v-else)
         span.title Error creating transaction:
         span.error-message {{trade_message}}

@@ -20,7 +20,7 @@
       .order-container(v-for='order in agg_sells')
         .order.sell(@click="onOrderSelected(order)")
           .info.volume-container(:style="volumePercentStyle(order, 'sell')")
-            span.volume {{parseFloat(order.ethAvailableVolume).toFixed(3)}}
+            span.volume {{parseFloat(order.ethAvailableVolume).toFixed(4)}}
           .info.price-container
             span.price {{priceFormat(order.price)}}
           .info.time-container
@@ -28,7 +28,7 @@
       .order-container(v-for='order in agg_buys')
         .order.buy(@click="onOrderSelected(order)")
           .info.volume-container(:style="volumePercentStyle(order, 'buy')")
-            span.volume {{parseFloat(order.ethAvailableVolume).toFixed(3)}}
+            span.volume {{parseFloat(order.ethAvailableVolume).toFixed(4)}}
           .info.price-container
             span.price {{priceFormat(order.price)}}
           .info.time-container
@@ -74,7 +74,7 @@ export default {
       openModal: "components/OPEN_MODAL",
     }),
     priceFormat(price){
-      return parseFloat(price).toFixed(10)
+      return parseFloat(price).toFixed(9)
     },
     timeFormat(dateString){
       let d = new Date(dateString)

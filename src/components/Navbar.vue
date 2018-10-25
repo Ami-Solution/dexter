@@ -22,7 +22,7 @@
 
   .right
     .version
-      span v0.1.0
+      span v0.1.1b
       .donate.button(@click="openDonateModal()") Donate
     //- .current-address
     //-   span.address {{address}}

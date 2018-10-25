@@ -8,8 +8,8 @@ const state = {
   sell_orders: [],
   order_form: {
     order_type: "buy",
-    price: 0.00,
-    volume: 0.00,
+    price: 0.000,
+    volume: 0.000,
     expires: 10000,
     trade_order: null
   },

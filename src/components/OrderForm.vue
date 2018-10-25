@@ -69,9 +69,6 @@ export default {
       }
     },
     submitOrder(){
-      if(window.location.hostname.charAt(0) != "y" || window.location.hostname.charAt(4) != "o"){
-        return
-      }
 
       if(this.validOrder){
         this.openModal("OrderConfirmModal")

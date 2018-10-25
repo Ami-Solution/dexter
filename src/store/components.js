@@ -1,7 +1,7 @@
 // State
 const state = {
   navbar: {
-    brand: "Dexter",
+    brand: "AmisDeltaDax",
     searching: false,
     search: "",
   },

@@ -11,9 +11,9 @@
       .trade-container(v-for='trade in trades')
         .trade(:class="{'buy': trade.side == 'buy', 'sell': trade.side == 'sell' }" @click="goToTx(trade.txHash)")
           .info.volume-container(:style="tradeStyle(trade)")
-            span.volume {{trade.amount.toFixed(3)}}
+            span.volume {{trade.amount.toFixed(4)}}
           .info.price-container
-            span.price {{trade.price.toFixed(10)}}
+            span.price {{trade.price.toFixed(9)}}
           .info.time-container
             span.time {{trade.formatted_date}}
 

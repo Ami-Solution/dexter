@@ -17,11 +17,11 @@
         .info
           span(v-if="orderForm.order_type === 'sell'") Fee ({{token.name}})
           span(v-else) Fee (ETH)
-          span.amount {{fee.toFixed(10)}}
+          span.amount {{fee.toFixed(9)}}
       .field.order
         .info
           span Order (ETH)
-          span.amount {{(orderForm.price * orderForm.volume).toFixed(10)}}
+          span.amount {{(orderForm.price * orderForm.volume).toFixed(9)}}
       .field
         .button(@click="submitOrder()" :class="{'sell': orderForm.order_type === 'sell'}")
           span {{orderForm.order_type.toUpperCase()}} {{orderForm.volume}} {{token.name}} @ {{orderForm.price}} ETH

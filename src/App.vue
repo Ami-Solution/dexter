@@ -24,7 +24,7 @@ export default {
   },
   name: 'app',
   created(){
-    console.log("%cWelcome to the DeltaDax Exchange", 'background: #222; color: #4dccff; font-size: 18px')
+    console.log("%cWelcome to the AmisDeltaDax Exchange", 'background: #222; color: #4dccff; font-size: 18px')
   },
 }
 </script>
